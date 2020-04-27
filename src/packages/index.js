@@ -3,6 +3,7 @@ import Icon from './icon.vue'
 import Tree from './tree.vue'
 import Carousel from './carousel.vue'
 import Carouselitem from './carouselitem.vue'
+console.log(Carouselitem)
 const install = (Vue) => {
   Vue.component(Button.name, Button)
   Vue.component(Icon.name, Icon)

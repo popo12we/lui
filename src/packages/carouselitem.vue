@@ -1,27 +1,26 @@
 <template>
-<transition>
-  <div class="carouselitem" v-if="isshow" :class="{reserve}">
-    <slot></slot>
-  </div>
+  <transition>
+    <div class="carouselitem" v-if="isshow" >
+      <slot></slot>
+    </div>
   </transition>
 </template>
 
 <script>
 export default {
-  name: 'carouselitem',
-  data () {
-    let children = this.$parent.$children.filter(child => child.$options.name === 'carouselitem')
-    return {
-      index: children.length - 1,
-      reserve: false
-    }
+  name: "Carouselitem",
+  data() {
+       let children=this.$parent.$children.filter(child=>child.$options.name==="Carouselitem")
+      return{
+          index:children.length-1
+      }
   },
   computed: {
-    isshow () {
-      return this.$parent.currentSelected === this.index
+    isshow() {
+      return this.$parent.currentSelected === this.index;
     }
   }
-}
+};
 </script>
 
 <style  lang="scss">
