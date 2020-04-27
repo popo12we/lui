@@ -1,12 +1,13 @@
 {
-  "name": "92lui",
+  "name": "lui",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "test": "karma start"
+    "test": "karma start",
+    "lib": "vue-cli-service build --target lib --name lui-ui ./src/packages/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.4",
