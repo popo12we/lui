@@ -6,14 +6,14 @@ import messageComponent from './message.vue'
 let MessageClass = Vue.extend(messageComponent)
 console.log(MessageClass)
 //挂载到页面上的方法
-const Message = (options) => {
-   console.log(options)
-  let instance = new MessageClass({
-    data: options,
-  })
-  instance.$mount()
-  document.body.appendChild(instance.$el)
-  instance.visible = true // 扔到页面时 将属性visible改成true
+const Message =options=>{
+   let instance=new MessageClass({
+      data:options
+   })
+   instance.$mount()
+   // console.log(instance.$el)
+   document.body.appendChild(instance.$el)
+   instance.visible=true
 }
 
 // 调用情况

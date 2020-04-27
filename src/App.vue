@@ -1,18 +1,49 @@
 <template>
   <div>
-    <button @click="fn">按钮</button>
+    <zh-tree :data="data"></zh-tree>
   </div>
 </template>
 <script>
-import { Message } from "./packages/message.js";
 export default {
-  methods: {
-    fn() {
-      Message({
-        type: "success",
-        message:"成功"
-      })
+  data () {
+    return {
+      data: [
+        {
+          label: '一级 1',
+          children: [
+            {
+              label: '二级 1-1',
+              children: [
+                {
+                  label: '三级 1-1-1',
+                  children: [
+                    {
+                      label: '四级 1-1-1-1'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          label: '一级 2'
+        },
+        {
+          label: '一级 3',
+          children: [
+            {
+              label: '二级 3-1',
+              children: [
+                {
+                  label: '三级 3-1-1'
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   }
-};
+}
 </script>
