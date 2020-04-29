@@ -4,6 +4,7 @@
     :columns="columns1"
      :data="data1"
      @on-select="select"
+     @on-select-all="selectAll"
      ></zh-table>
     <!-- <zh-pagination :total="total" :page-count="pageCount" :current-page.sync="currentPage"></zh-pagination> -->
   </div>
@@ -67,10 +68,11 @@ export default {
   },
   methods:{
     select(selection,row){
-      // selection 表示选中的所有的  row 表示当前是哪一个
-      
-      console.log(selection)
+    
     },
+    selectAll(selection){
+      console.log(selection)
+    }
   }
 }
 </script>

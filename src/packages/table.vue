@@ -6,7 +6,7 @@
           <tr>
             <th v-for="(col,index) in cloneColumns" :key="index" :style="{width:col.width+'px'}">
               <div v-if="col.type==='selection'">
-                <input type="checkbox" :checked="checkAllStatus" ref="checkAll"/>
+                <input type="checkbox" :checked="checkAllStatus" ref="checkAll" @change="changeAll"/>
               </div>
               <div>{{col.title}}</div>
             </th>
@@ -16,7 +16,7 @@
           <tr v-for="(row,index) in cloneData" :key="index">
             <td v-for="(col,index) in cloneColumns" :key="index">
               <div v-if="col.type==='selection'">
-                <input type="checkbox" @change="selectOne($event,row)" />
+                <input type="checkbox" @change="selectOne($event,row)" :checked="isChecked(row)"/>
               </div>
               <div>{{row[col.key]}}</div>
             </td>
@@ -60,6 +60,15 @@ export default {
       }
 
       this.$emit("on-select", this.selectedItems, row);
+    },
+
+    //全选
+    changeAll(e){
+      e.target.checked?this.selectedItems=this.cloneData:this.selectedItems=[]
+      this.$emit("on-select-all",this.selectedItems);
+    },
+    isChecked(row){
+       return this.selectedItems.some(item=>item._id===row._id)
     }
   },
   computed: {
