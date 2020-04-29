@@ -70,7 +70,6 @@ export default {
       if (index === this.len - 1 && newIndex === 0) this.reverse = false
       this.$nextTick(() => {
         this.currentSelected = newIndex
-        console.log(this.currentSelected)
       })
     },
     run() {

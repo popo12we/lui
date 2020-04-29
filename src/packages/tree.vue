@@ -29,7 +29,6 @@ export default {
     const flag = !this.showChildren[index]
       // console.log(flag)
       this.$set(this.showChildren, index, flag)
-      console.log(this.showChildren, index, flag)
     //   const flag=this.
     }
   }

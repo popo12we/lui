@@ -4,7 +4,6 @@
 import Vue from 'vue'
 import messageComponent from './message.vue'
 let MessageClass = Vue.extend(messageComponent)
-console.log(MessageClass)
 //挂载到页面上的方法
 const Message =options=>{
    let instance=new MessageClass({
