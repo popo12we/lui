@@ -1,25 +1,26 @@
 <template>
   <ul class="zh-pagination">
     <li>
-      <zh-icon icon="left"></zh-icon>
+      <zh-icon icon="left" @click="select(currentPage-1)"></zh-icon>
     </li>
     <li>
-      <span>1</span>
+      <span @click="select(1)">1</span>
     </li>
     <li v-if="showPrevMore">
       <span>...</span>
     </li>
     <li v-for="item in pagers" :key="item">
-      <span>{{item}}</span>
+      <span @click="select(item)" :class="{active:currentPage===item}">{{item}}</span>
+     
     </li>
     <li v-if="showNextMore">
       <span>...</span>
     </li>
     <li>
-      <span>{{total}}</span>
+      <span @click="select(total)">{{total}}</span>
     </li>
     <li>
-      <zh-icon icon="right"></zh-icon>
+      <zh-icon icon="right" @click="select(currentPage+1)"></zh-icon>
     </li>
   </ul>
 </template>
@@ -34,6 +35,20 @@ export default {
       //是否显示下一个...
       showNextMore: false
     };
+  },
+  methods:{
+     //点击按钮单选
+     select(current){
+       //极限值判断
+       if(current<1){
+         this.current=1
+       }
+       if(current>this.total){
+         this.current=this.total
+       }
+       //让父组件改currentPage
+       this.$emit("update:current-page",current)
+     }
   },
   computed: {
     // 最多显示7个按钮

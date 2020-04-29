@@ -12,7 +12,7 @@ export default {
        //总条数
        total:10,
        //分页器一共展示多少按钮
-       pageCount:7,
+       pageCount:5,
        //当前页
        currentPage:3
      }
