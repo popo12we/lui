@@ -4,7 +4,10 @@
       <table ref="table">
         <thead>
           <tr>
-            <th v-for="(col,index) in cloneColumns" :key="index">
+            <th v-for="(col,index) in cloneColumns" :key="index" :style="{width:col.width+'px'}">
+              <div v-if="col.type==='selection'">
+                <input type="checkbox" :checked="checkAllStatus" ref="checkAll"/>
+              </div>
               <div>{{col.title}}</div>
             </th>
           </tr>
@@ -12,6 +15,9 @@
         <tbody>
           <tr v-for="(row,index) in cloneData" :key="index">
             <td v-for="(col,index) in cloneColumns" :key="index">
+              <div v-if="col.type==='selection'">
+                <input type="checkbox" @change="selectOne($event,row)" />
+              </div>
               <div>{{row[col.key]}}</div>
             </td>
           </tr>
@@ -29,7 +35,45 @@ export default {
     return {
       cloneColumns: cloneDeep(this.columns),
       cloneData: cloneDeep(this.data),
+      //选中项组成的数组
       selectedItems: []
+    };
+  },
+  created() {
+    this.cloneData = this.cloneData.map(row => {
+      row._id = Math.random();
+      return row;
+    });
+  },
+  methods: {
+    /**
+     * e:当前选中项信息
+     * row:当前选中行
+     */
+    selectOne(e, row) {
+      if (e.target.checked) {
+        this.selectedItems.push(row);
+      } else {
+        this.selectedItems = this.selectedItems.filter(
+          item => item._id != row._id
+        );
+      }
+
+      this.$emit("on-select", this.selectedItems, row);
+    }
+  },
+  computed: {
+    checkAllStatus() {
+      return this.selectedItems.length === this.cloneData.length;
+    }
+  },
+  watch: {
+    selectedItems() {
+       if((this.selectedItems.length === this.cloneData.length)||this.selectedItems.length===0){
+         this.$refs.checkAll[0].indeterminate=false
+       }else{
+         this.$refs.checkAll[0].indeterminate=true
+       }
     }
   },
   props: {
