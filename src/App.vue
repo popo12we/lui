@@ -5,7 +5,11 @@
      :data="data1"
      @on-select="select"
      @on-select-all="selectAll"
-     ></zh-table>
+     >
+     <template slot="name" slot-scope="{row,col}">
+          <h1> {{row[col.key]}} </h1>
+      </template>
+     </zh-table>
     <!-- <zh-pagination :total="total" :page-count="pageCount" :current-page.sync="currentPage"></zh-pagination> -->
   </div>
 </template>
@@ -27,7 +31,8 @@ export default {
         },
         {
           title: "Name",
-          key: "name"
+          key: "name",
+          slot:'name'
         },
         {
           title: "Age",

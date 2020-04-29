@@ -18,7 +18,15 @@
               <div v-if="col.type==='selection'">
                 <input type="checkbox" @change="selectOne($event,row)" :checked="isChecked(row)"/>
               </div>
-              <div>{{row[col.key]}}</div>
+              <template v-if="col.slot">
+                <slot :name="col.slot" :row="row" :col="col"></slot>
+              </template>
+                <!-- <template slot="name" slot-scope="{row,col}">
+                  <h1> {{row[col.key]}} </h1>
+                </template> -->
+              <template v-else>
+                 <div>{{row[col.key]}}</div>
+              </template>
             </td>
           </tr>
         </tbody>
