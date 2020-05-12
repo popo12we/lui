@@ -6,7 +6,19 @@
 
 <script>
 export default {
-   name:"el-form"
+   name:"el-form",
+   props:{
+       model:{
+           type:Object,
+           default:()=>({})
+       },
+       rules:Object
+   },
+   methods:{
+       validate(){
+           
+       }
+   }
 }
 </script>
 

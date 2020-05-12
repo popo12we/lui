@@ -1,10 +1,11 @@
 <template>
   <div>
+    {{ruleForm}}
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-      <el-form-item label="活动名称" prop="username">
+      <el-form-item label="用户名" prop="username">
         <el-input v-model="ruleForm.username"></el-input>
       </el-form-item>
-      <el-form-item label="活动名称" prop="password">
+      <el-form-item label="密码" prop="password">
         <el-input v-model="ruleForm.password"></el-input>
       </el-form-item>
       <button @click="submitForm">提交</button>

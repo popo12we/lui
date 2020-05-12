@@ -1,13 +1,21 @@
 <template>
     <div>
-        <label></label>
+        <label v-if="label">{{label}}</label>
         <slot></slot>
     </div>
 </template>
 
 <script>
+import { Stream } from 'stream';
 export default {
- name:"el-form-item"
+ name:"el-form-item",
+ props:{
+     label:{
+         type:String,
+         default:""
+     },
+     prop:String
+ }
 }
 </script>
 
