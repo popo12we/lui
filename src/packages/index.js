@@ -5,6 +5,9 @@ import Carousel from './carousel.vue'
 import Carouselitem from './carouselitem.vue'
 import Pagination from './pagination.vue'
 import Table from './table.vue'
+import elForm from './el-form.vue'
+import elFormItem from './el-form-item.vue'
+import elInput from './el-input.vue'
 const install = (Vue) => {
   Vue.component(Button.name, Button)
   Vue.component(Icon.name, Icon)
@@ -13,6 +16,9 @@ const install = (Vue) => {
   Vue.component(Carouselitem.name, Carouselitem)
   Vue.component(Pagination.name, Pagination)
   Vue.component(Table.name, Table)
+  Vue.component(elForm.name, elForm)
+  Vue.component(elFormItem.name, elFormItem)
+  Vue.component(elInput.name, elInput)
 }
 if (typeof window.Vue !== 'undefined') {
   install(Vue) // 全局直接通过script 引用的方式会默认调用install方法
