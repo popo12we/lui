@@ -1,14 +1,14 @@
 <template>
   <div>
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
-      <el-form-item label="用户名" prop="username">
-        <el-input v-model="ruleForm.username"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input v-model="ruleForm.password"></el-input>
-      </el-form-item>
-      <button @click="submitForm('ruleForm')">提交</button>
-    </el-form>
+    <ul style="overflow-y:scroll"
+     v-infinite-scroll="load"
+     infinite-scroll-disabled="hasMore"
+     infinite-scroll-delay="delay"
+     infinite-scroll-distance="distance"
+     infinite-scroll-immediate="immediate"
+      class="box"
+      ></ul>
+    <li v-for="c in count" :key="c">{{c}}</li>
   </div>
 </template>
 
@@ -17,43 +17,32 @@
 export default {
   data() {
     return {
-      ruleForm: {
-        username: "",
-        password:""
-        
-      },
-      rules: {
-        username: [
-          { required: true, message: "请输入活动名称" },
-          { min: 3, max: 5, message: "长度在 3 到 5 个字符"}
-        ],
-          password: [
-          { required: true, message: "请输入活动名称" },
-          { min: 3, max: 5, message: "长度在 3 到 5 个字符"}
-        ],
-     
-      }
+      count: 0,
+      //是否有更多数据
+      hasMore:true,
+      //节流时间
+      delay:200,
+      //触底加载阈值
+      distance:30,
+      //是否立即加载满数据
+      immediate:true
     };
   },
   methods: {
-    submitForm(formName) {
-     
-      this.$refs[formName].validate(valid => {
-      
-        if (valid) {
-          alert("submit!");
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+    load() {
+      this.load += 2;
     }
   }
 };
 </script>
-<style>
+<style  lang="scss">
 * {
   margin: 0;
   padding: 0;
+}
+.box{
+   width: 400px;
+   height: 300px;
+   border:1px solid green;
 }
 </style>

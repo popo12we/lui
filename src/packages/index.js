@@ -8,6 +8,7 @@ import Table from './table.vue'
 import elForm from './el-form.vue'
 import elFormItem from './el-form-item.vue'
 import elInput from './el-input.vue'
+import infiniteScroll from './infiniteScroll.js'
 const install = (Vue) => {
   Vue.component(Button.name, Button)
   Vue.component(Icon.name, Icon)
@@ -19,6 +20,7 @@ const install = (Vue) => {
   Vue.component(elForm.name, elForm)
   Vue.component(elFormItem.name, elFormItem)
   Vue.component(elInput.name, elInput)
+  Vue.directive(infiniteScroll.name, infiniteScroll)
 }
 if (typeof window.Vue !== 'undefined') {
   install(Vue) // 全局直接通过script 引用的方式会默认调用install方法
