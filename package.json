@@ -10,6 +10,7 @@
     "lib": "vue-cli-service build --target lib --name lui-ui ./src/packages/index.js"
   },
   "dependencies": {
+    "async-validator": "^3.3.0",
     "core-js": "^3.6.4",
     "lodash": "^4.17.15",
     "vue": "^2.6.11"
